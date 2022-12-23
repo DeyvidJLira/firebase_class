@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_class/models/api_response.model.dart';
 import 'package:firebase_class/models/person.model.dart';
@@ -23,7 +24,13 @@ class LoginController {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: _email, password: _password);
       if (userCredential.user != null) {
-        _userStore.loadPerson(Person(fullName: "Deyvid Jaguaribe"));
+        DocumentSnapshot snapshot = await FirebaseFirestore.instance
+            .collection("users")
+            .doc(userCredential.user!.uid)
+            .get();
+        Person person =
+            Person.fromFirestore(snapshot.data() as Map<String, dynamic>);
+        _userStore.loadPerson(person);
         return APIResponse.success(true);
       } else {
         return APIResponse.error("Ops! Algum problema aconteceu!");

@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_class/navigator_key.dart';
 import 'package:firebase_class/store/user.store.dart';
+import 'package:firebase_class/ui/pages/forgot_password.page.dart';
 import 'package:firebase_class/ui/pages/home.page.dart';
 import 'package:firebase_class/ui/pages/login.page.dart';
 import 'package:firebase_class/ui/pages/register.page.dart';
@@ -28,9 +30,10 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       routes: {
         "/": (context) => const SplashPage(),
-        "/login": (context) => LoginPage(),
-        "/register": (context) => const RegisterPage(),
-        "/home": (context) => HomePage()
+        "/login": (context) => const LoginPage(),
+        "/register": (context) => RegisterPage(),
+        "/home": (context) => const HomePage(),
+        "/forgotPassword": (context) => ForgotPasswordPage(),
       },
     );
   }
