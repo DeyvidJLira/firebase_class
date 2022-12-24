@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_class/controllers/home.controller.dart';
 import 'package:firebase_class/store/user.store.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 
 class HomePage extends StatefulWidget {
@@ -59,13 +60,24 @@ class _HomePageState extends State<HomePage> {
                 size: 144,
               )),
             )),
-            TextButton(onPressed: _controller.logout, child: const Text("Sair"))
+            ListTile(
+              leading: const Icon(Icons.list),
+              title: const Text("Lista de Tarefas"),
+              onTap: () => Navigator.pushNamed(context, "/todoList"),
+            ),
+            ListTile(
+              leading: const Icon(Icons.exit_to_app),
+              title: const Text("Sair"),
+              onTap: () => _controller.logout,
+            )
           ],
         ),
       ),
       body: SizedBox(
-        child: Center(
-          child: Text("Bem vindo de volta, ${_userStore.person!.firstName}"),
+        child: Observer(
+          builder: (_) => Center(
+            child: Text("Bem vindo de volta, ${_userStore.person!.firstName}"),
+          ),
         ),
       ),
     );

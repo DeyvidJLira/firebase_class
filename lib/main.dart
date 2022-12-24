@@ -6,6 +6,7 @@ import 'package:firebase_class/ui/pages/home.page.dart';
 import 'package:firebase_class/ui/pages/login.page.dart';
 import 'package:firebase_class/ui/pages/register.page.dart';
 import 'package:firebase_class/ui/pages/splash.page.dart';
+import 'package:firebase_class/ui/pages/todo.page.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         "/register": (context) => RegisterPage(),
         "/home": (context) => const HomePage(),
         "/forgotPassword": (context) => ForgotPasswordPage(),
+        "/todoList": (context) => const TodoPage(),
       },
     );
   }
