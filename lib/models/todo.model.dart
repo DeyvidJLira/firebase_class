@@ -3,10 +3,10 @@ class Todo {
   String title = "";
   bool isDone = false;
 
-  Todo({this.title = "", this.isDone = false});
+  Todo({this.uid, this.title = "", this.isDone = false});
 
   Todo copyWith({bool newIsDone = false}) {
-    return Todo(title: title, isDone: newIsDone);
+    return Todo(uid: uid, title: title, isDone: newIsDone);
   }
 
   Todo.fromFirestore(Map<String, dynamic> map) {

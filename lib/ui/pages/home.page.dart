@@ -68,15 +68,16 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               leading: const Icon(Icons.exit_to_app),
               title: const Text("Sair"),
-              onTap: () => _controller.logout,
+              onTap: _controller.logout,
             )
           ],
         ),
       ),
       body: SizedBox(
-        child: Observer(
-          builder: (_) => Center(
-            child: Text("Bem vindo de volta, ${_userStore.person!.firstName}"),
+        child: Center(
+          child: Observer(
+            builder: (_) =>
+                Text("Bem vindo de volta, ${_userStore.person!.firstName}"),
           ),
         ),
       ),
